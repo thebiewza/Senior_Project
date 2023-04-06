@@ -6,7 +6,8 @@ public class GameController : MonoBehaviour
 {
     public bool isStart = false;
     public bool isGameover = false;
-    public GameObject startGroup, panelGroup, gameoverGroup;
+    public GameObject startGroup, panelGroup, gameoverGroup, spawnPoint;
+    public TextMesh scoreLabel, hpLabel;
     public int score = 0;
     public int hp = 3;
 
@@ -16,6 +17,7 @@ public class GameController : MonoBehaviour
         startGroup.SetActive(true);
         panelGroup.SetActive(false);
         gameoverGroup.SetActive(false);
+        spawnPoint.SetActive(false);
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class GameController : MonoBehaviour
             startGroup.SetActive(false);
             panelGroup.SetActive(true);
             gameoverGroup.SetActive(false);
+            spawnPoint.SetActive(true);
 
         }
         else
@@ -33,7 +36,17 @@ public class GameController : MonoBehaviour
             startGroup.SetActive(true);
             panelGroup.SetActive(false);
             gameoverGroup.SetActive(false);
+            spawnPoint.SetActive(false);
 
+        }
+
+        scoreLabel.text = "Score : " + score;
+        hpLabel.text = "Live : " + hp;
+
+        if(hp <= 0)
+        {
+            hp = 0;
+            isGameover = true;
         }
 
         if (isGameover)
@@ -41,9 +54,14 @@ public class GameController : MonoBehaviour
             //จบเกม
             startGroup.SetActive(false);
             panelGroup.SetActive(true);
-            gameoverGroup.SetActive(false);
+            gameoverGroup.SetActive(true);
+            spawnPoint.SetActive(false);
+
 
         }
+
+
+
     }
 
     public void getTriggerStart()

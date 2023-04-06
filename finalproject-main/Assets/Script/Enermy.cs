@@ -8,6 +8,7 @@ public class Enermy : MonoBehaviour
     public float speed = 0.05f;
     public float DelayDestroy = 10.0f;
     float startTime;
+    public string weaponTag;
     public GameObject explode;
     GameController gameController;
 
@@ -29,7 +30,7 @@ public class Enermy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "weapon")
+        if (other.gameObject.tag == weaponTag)
         {
             Destroy(this.gameObject);
             Instantiate(explode, transform.position, transform.rotation);
@@ -37,6 +38,7 @@ public class Enermy : MonoBehaviour
         }
         if (other.gameObject.tag == "Player")
         {
+            gameController.getDamage();
             Destroy(this.gameObject);
         }
     }
