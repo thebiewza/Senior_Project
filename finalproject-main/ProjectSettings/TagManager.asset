@@ -8,6 +8,7 @@ TagManager:
   - weapon
   - weaponL
   - weaponR
+  - wall
   layers:
   - Default
   - TransparentFX

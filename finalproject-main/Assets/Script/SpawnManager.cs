@@ -20,7 +20,7 @@ public class SpawnManager : MonoBehaviour
             temp = (GameObject)Instantiate(monster);
             isRand = true;
             Vector3 positionMonster = temp.transform.position;
-            temp.transform.position = new Vector3(Random.Range(-2.3f, 2.3f), 0.3f, positionMonster.z);
+            temp.transform.position = new Vector3(Random.Range(-2.3f, 2.3f), 1.0f, positionMonster.z);
             timeElapsed -= ItemCycle;
         }
 

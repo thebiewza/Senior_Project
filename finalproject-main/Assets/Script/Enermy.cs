@@ -1,6 +1,7 @@
 using Oculus.Platform.Samples.VrBoardGame;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Enermy : MonoBehaviour
@@ -36,10 +37,13 @@ public class Enermy : MonoBehaviour
             Instantiate(explode, transform.position, transform.rotation);
             gameController.getScore();
         }
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "wall")
         {
-            gameController.getDamage();
             Destroy(this.gameObject);
+            Debug.Log("destroy");
+            gameController.getDamage();
+            Debug.Log("hp : -1");
+
         }
     }
 }

@@ -56,12 +56,16 @@ public class GameController : MonoBehaviour
             panelGroup.SetActive(true);
             gameoverGroup.SetActive(true);
             spawnPoint.SetActive(false);
-
+            StartCoroutine(resetLevel());
 
         }
+    }
 
-
-
+    IEnumerator resetLevel()
+    {
+        yield return new WaitForSeconds(3.0f);
+        isGameover = false;
+        isStart = false;
     }
 
     public void getTriggerStart()
@@ -71,7 +75,7 @@ public class GameController : MonoBehaviour
 
     public void getScore()
     {
-        score = score + 1;      
+        score = score + 1;
     }
 
     public void getDamage()
